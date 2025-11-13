@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>StudioElf.Theme.Bootswatch</id>
+    <version>6.5.3.8</version>
+    <authors>StudioElf</authors>
+    <owners>StudioElf</owners>
+    <title>Oqtane Bootswatch Theme</title>
+    <description>A collection of themes based on Bootswatch</description>
+    <copyright>StudioElf</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/oqtane/oqtane.theme.bootswatch</projectUrl>
+    <icon>icon.png</icon>
+    <tags>oqtane theme</tags>
+    <releaseNotes></releaseNotes>
+    <summary></summary>
+    <dependencies>
+      <dependency id="Oqtane.Framework" version="6.2.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Client\bin\Release\net9.0\StudioElf.Theme.Bootswatch.Oqtane.dll" target="lib\net9.0" />
+    <file src="..\Client\bin\Release\net9.0\StudioElf.Theme.Bootswatch.Oqtane.pdb" target="lib\net9.0" />
+    <file src="..\Client\wwwroot\**\*.*" target="wwwroot" /> 
+    <file src="icon.png" target="" />
+  </files>
+</package>

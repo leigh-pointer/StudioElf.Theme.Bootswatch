@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Version>6.1.6</Version>
+    <Authors>StudioElf</Authors>
+    <Company>StudioElf</Company>
+    <Description>StudioElf Oqtane Bootswatch Themes</Description>
+    <Product>StudioElf.Theme.Bootswatch</Product>
+    <Copyright>StudioElf</Copyright>
+    <AssemblyName>StudioElf.Theme.Bootswatch.Oqtane</AssemblyName>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="9.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.9" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Oqtane.Client" Version="6.2.1" />
+    <PackageReference Include="Oqtane.Shared" Version="6.2.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- there may be other elements here -->
+    <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Client\StudioElf.Theme.Bootswatch.Client.csproj" />
+	</ItemGroup>
+
+	<!-- Ensure UpdateBootswatchThemes runs before the package build -->
+	<Target Name="UpdateBootswatchThemes" BeforeTargets="PrepareForBuild">
+		<Message Text="Running UpdateBootswatchThemes tool (will update ThemeInfo.cs files)..." Importance="high" />
+		<Exec Command="dotnet run --project &quot;$(MSBuildThisFileDirectory)..\Tools\UpdateBootswatchThemes\UpdateBootswatchThemes.csproj&quot;" />
+	</Target>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Condition="'$(OS)' == 'Windows_NT' And '$(Configuration)' == 'Debug'" Command="debug.cmd" />
+		<Exec Condition="'$(OS)' == 'Windows_NT' And '$(Configuration)' == 'Release'" Command="release.cmd" />
+	</Target>
+
+</Project>
