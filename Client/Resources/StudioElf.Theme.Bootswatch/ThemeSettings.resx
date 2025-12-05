@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Login.Text" xml:space="preserve">
-    <value>Show Login?</value>
+    <value>ShowLogin?</value>
   </data>
   <data name="Login.HelpText" xml:space="preserve">
     <value>Specify if a Login option should be displayed. Note that this option does not prevent the login page from being accessible via a direct url.</value>
@@ -139,7 +139,7 @@
     <value>Mode:</value>
   </data>
   <data name="Mode.HelpText" xml:space="preserve">
-    <value>Specify the Bootstrap theme mode</value>
+    <value>Specify the Bootstrap theme mode Dark or Light</value>
   </data>
   <data name="AdminWidthFluid.Text" xml:space="preserve">
     <value>Admin Width Fluid</value>
@@ -151,7 +151,7 @@
     <value>Admin Remove Gutter</value>
   </data>
   <data name="AdminRemoveGutter.HelpText" xml:space="preserve">
-    <value>Specify the Admin container width %</value>
+    <value>Admin Remove Guttering</value>
   </data>
   <data name="ContentWidthFluid.Text" xml:space="preserve">
     <value>Content Width Fluid</value>
@@ -163,6 +163,6 @@
     <value>Content Remove Gutter</value>
   </data>
   <data name="ContentRemoveGutter.HelpText" xml:space="preserve">
-    <value>Specify the Admin container width %</value>
+    <value>Content Remove Guttering</value>
   </data>
 </root>

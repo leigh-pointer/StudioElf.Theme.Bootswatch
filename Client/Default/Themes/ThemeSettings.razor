@@ -10,7 +10,7 @@
 {
     <div class="container">
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="login" ResourceKey="Login" ResourceType="@_resourceType" HelpText="Specify if a Login option should be displayed. Note that this option does not prevent the login page from being accessible via a direct url.">Show Login?</Label>
+            <Label Class="col-sm-3" For="login" ResourceKey="Login" HelpText="Specify if a Login option should be displayed. Note that this option does not prevent the login page from being accessible via a direct url.">Show Login?</Label>
             <div class="col-sm-9">
                 <select id="login" class="form-select" value="@BootswatchThemeSettings.Login.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Login = bool.Parse(e.Value.ToString()))">
                     <option value="True">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="register" ResourceKey="Register" ResourceType="@_resourceType" HelpText="Specify if a Register option should be displayed. Note that this option is also dependent on the Allow Registration option in User Settings.">Show Register?</Label>
+            <Label Class="col-sm-3" For="register" ResourceKey="Register" HelpText="Specify if a Register option should be displayed. Note that this option is also dependent on the Allow Registration option in User Settings.">Show Register?</Label>
             <div class="col-sm-9">
                 <select id="register" class="form-select" value="@BootswatchThemeSettings.Register.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Register = bool.Parse(e.Value.ToString()))">
                     <option value="True">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="search" ResourceKey="Search" ResourceType="@_resourceType" HelpText="Specify if a search icon should be displayed">Show Search?</Label>
+            <Label Class="col-sm-3" For="search" ResourceKey="Search" HelpText="Specify if a search icon should be displayed">Show Search?</Label>
             <div class="col-sm-9">
                 <select id="search" class="form-select" value="@BootswatchThemeSettings.Search.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Search = bool.Parse(e.Value.ToString()))">
                     <option value="True">
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="mode" ResourceKey="Mode" ResourceType="@_resourceType" HelpText="Specify the Bootstrap theme mode">Mode:</Label>
+            <Label Class="col-sm-3" For="mode" ResourceKey="Mode" HelpText="Specify the Bootstrap theme mode Dark or Light">Mode:</Label>
             <div class="col-sm-9">
                 <select id="mode" class="form-select" @bind="@BootswatchThemeSettings.Mode">
                     <option value="light">@SharedLocalizer["Light"]</option>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="AdminWidthFluid" ResourceType="@_resourceType" HelpText="Specify the Admin container width %">Admin Width Fluid</Label>
+            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="AdminWidthFluid" HelpText="Specify the Admin container width %">Admin Width Fluid</Label>
             <div class="col-sm-5">
                 <select id="ContentWidthFluid" class="form-select" @bind="@BootswatchThemeSettings.AdminWidthFluid">
                     <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="AdminRemoveGutter" ResourceKey="AdminRemoveGutter" ResourceType="@_resourceType" HelpText="Specify the Admin container width %">Admin Remove Gutter</Label>
+            <Label Class="col-sm-3" For="AdminRemoveGutter" ResourceKey="AdminRemoveGutter" HelpText="Admin Remove Guttering">Admin Remove Gutter</Label>
             <div class="col-sm-5">
                 <select id="AdminRemoveGutter" class="form-select" value="@BootswatchThemeSettings.AdminRemoveGutter.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.AdminRemoveGutter = bool.Parse(e.Value.ToString()))">
                     <option value="True">
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="ContentWidthFluid" ResourceType="@_resourceType" HelpText="Specify the content container width %">Content Width Fluid</Label>
+            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="ContentWidthFluid" HelpText="Specify the content container width %">Content Width Fluid</Label>
             <div class="col-sm-5">
                 <select id="ContentWidthFluid" class="form-select" @bind="@BootswatchThemeSettings.ContentWidthFluid">
                     <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentRemoveGutter" ResourceKey="ContentRemoveGutter" ResourceType="@_resourceType" HelpText="Specify the Admin container width %">Content Remove Gutter</Label>
+            <Label Class="col-sm-3" For="ContentRemoveGutter" ResourceKey="ContentRemoveGutter" HelpText="Content Remove Guttering">Content Remove Gutter</Label>
             <div class="col-sm-5">
                 <select id="ContentWidthFluid" class="form-select" value="@BootswatchThemeSettings.ContentRemoveGutter.ToString().ToLower()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.ContentRemoveGutter = bool.Parse(e.Value.ToString()))">
                     <option value="true">@SharedLocalizer["Yes"]</option>
@@ -112,7 +112,7 @@
     </div>
 }
 @code {
-    private string _resourceType = "StudioElf.Theme.Bootswatch.ThemeSettings, StudioElf.Theme.Bootswatch.Oqtane"; // for localization
+    //private string _resourceType = "StudioElf.Theme.Bootswatch.ThemeSettings, StudioElf.Theme.Bootswatch.Oqtane"; // for localization
     private BootswatchThemeSettings BootswatchThemeSettings;
     protected override async Task OnInitializedAsync()
     {

@@ -18,6 +18,7 @@ namespace StudioElf.Theme.Bootswatch.Client
         public bool ContentRemoveGutter { get; set; } = false;
 
         // The raw JSON backing store
+        [JsonIgnore]
         public string Serialized { get; set; } = "{}";
 
         #region Constructors
