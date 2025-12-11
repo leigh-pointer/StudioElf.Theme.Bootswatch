@@ -12,7 +12,7 @@
             <Label For="title" ResourceKey="Title" HelpText="Specify If The Module Title Should Be Displayed">Display Title?</Label>
         </td>
         <td>
-            <select id="title" class="form-control" @bind="@BootswatchContainerSettings.Title">
+            <select id="title" class="form-control" value="@BootswatchContainerSettings.Title" @onchange="@((ChangeEventArgs e) => BootswatchContainerSettings.Title = bool.Parse(e.Value.ToString()))">
                 <option value="True">
                     @SharedLocalizer["Yes"]
                 </option>

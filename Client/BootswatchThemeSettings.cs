@@ -8,6 +8,8 @@ namespace StudioElf.Theme.Bootswatch.Client
     {
         public const string SETTINGS_KEY = "StudioElf.Theme.Bootswatch";
 
+        public bool Logo { get; set; } = true;
+        public bool Menu { get; set; } = true;
         public bool Login { get; set; } = true;
         public bool Register { get; set; } = true;
         public bool Search { get; set; } = true;
@@ -42,6 +44,8 @@ namespace StudioElf.Theme.Bootswatch.Client
                 // Deserialize into THIS instance
                 var loaded = JsonSerializer.Deserialize<BootswatchThemeSettings>(json);
 
+                Logo = loaded?.Logo ?? Logo;
+                Menu = loaded?.Menu ?? Menu;
                 Login = loaded?.Login ?? Login;
                 Register = loaded?.Register ?? Register;
                 Search = loaded?.Search ?? Search;

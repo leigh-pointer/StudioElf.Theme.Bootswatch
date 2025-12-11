@@ -5,8 +5,14 @@
 
 <main role="main" data-bs-theme="@_ThemeSettings.Mode">
     <nav class="navbar navbar-dark bg-primary fixed-top">
-        <Logo UseSiteNameAsFallback="true" />
-        <Menu Orientation="Horizontal" />
+        @if(_ThemeSettings.Logo)
+        {
+            <Logo UseSiteNameAsFallback="true" />
+        }
+        @if (IsAdminOrHost || _ThemeSettings.Logo)
+        {
+            <Menu Orientation="Horizontal" />
+        }
         <div class="controls ms-auto">
             <div class="controls-group">
                 @if (_ThemeSettings.Search)
@@ -115,6 +121,10 @@
     public override string Name => "Default Theme";
     private BootswatchThemeSettings _ThemeSettings;
     public override string Panes => PaneNames.Default + ",Top Full Width,Top 100%,Left 50%,Right 50%,Left 33%,Center 33%,Right 33%,Left Outer 25%,Left Inner 25%,Right Inner 25%,Right Outer 25%,Left 25%,Center 50%,Right 25%,Left Sidebar 66%,Right Sidebar 33%,Left Sidebar 33%,Right Sidebar 66%,Bottom 100%,Bottom Full Width,Footer";
+    
+    protected bool IsHost => UserSecurity.IsAuthorized(PageState.User, RoleNames.Host);
+    protected bool IsAdmin => UserSecurity.IsAuthorized(PageState.User, RoleNames.Admin);
+    protected bool IsAdminOrHost => IsAdmin || IsHost;
 
     protected override void OnParametersSet()
     {

@@ -10,8 +10,34 @@
 {
     <div class="container">
         <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="logo" ResourceKey="Logo" HelpText="Specify if a Logo should be displayed">Show Logo?</Label>
+            <div class="col-sm-5">
+                <select id="logo" class="form-select" value="@BootswatchThemeSettings.Logo.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Logo = bool.Parse(e.Value.ToString()))">
+                    <option value="True">
+                        @SharedLocalizer["Yes"]
+                    </option>
+                    <option value="False">
+                        @SharedLocalizer["No"]
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="menu" ResourceKey="Menu" HelpText="Specify if a Menu should be displayed">Show Menu?</Label>
+            <div class="col-sm-5">
+                <select id="menu" class="form-select" value="@BootswatchThemeSettings.Menu.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Menu = bool.Parse(e.Value.ToString()))">
+                    <option value="True">
+                        @SharedLocalizer["Yes"]
+                    </option>
+                    <option value="False">
+                        @SharedLocalizer["No"]
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 align-items-center">
             <Label Class="col-sm-3" For="login" ResourceKey="Login" HelpText="Specify if a Login option should be displayed. Note that this option does not prevent the login page from being accessible via a direct url.">Show Login?</Label>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <select id="login" class="form-select" value="@BootswatchThemeSettings.Login.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Login = bool.Parse(e.Value.ToString()))">
                     <option value="True">
                         @SharedLocalizer["Yes"]
@@ -24,7 +50,7 @@
         </div>
         <div class="row mb-1 align-items-center">
             <Label Class="col-sm-3" For="register" ResourceKey="Register" HelpText="Specify if a Register option should be displayed. Note that this option is also dependent on the Allow Registration option in User Settings.">Show Register?</Label>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <select id="register" class="form-select" value="@BootswatchThemeSettings.Register.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Register = bool.Parse(e.Value.ToString()))">
                     <option value="True">
                         @SharedLocalizer["Yes"]
@@ -37,7 +63,7 @@
         </div>
         <div class="row mb-1 align-items-center">
             <Label Class="col-sm-3" For="search" ResourceKey="Search" HelpText="Specify if a search icon should be displayed">Show Search?</Label>
-            <div class="col-sm-9">
+            <div class="col-sm-5">
                 <select id="search" class="form-select" value="@BootswatchThemeSettings.Search.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Search = bool.Parse(e.Value.ToString()))">
                     <option value="True">
                         @SharedLocalizer["Yes"]
