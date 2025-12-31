@@ -1,9 +1,10 @@
 ﻿@namespace StudioElf.Theme.Bootswatch.Default
+@using StudioElf.Theme.Bootswatch.Client
 @inherits ContainerBase
 @inject ISettingService SettingService
 
 <div class="@_classes">
-    @if (_title && ModuleState.Title != "-")
+    @if (_ContainerSettings.Title && ModuleState.Title != "-")
     {
         <div class="row px-4">
             <div class="d-flex flex-nowrap">
@@ -26,18 +27,25 @@
 @code {
     public override string Name => "Customizable Container";
 
-    private string _namespace = "StudioElf.Theme.Bootswatch";
-    private bool _title = true;
+    private BootswatchContainerSettings _ContainerSettings;
     private string _classes = "container-fluid";
 
     protected override void OnParametersSet()
     {
         try
         {
-            _title = bool.Parse(SettingService.GetSetting(ModuleState.Settings, _namespace + ":Title", "true"));
-            _classes += " " + SettingService.GetSetting(ModuleState.Settings, _namespace + ":Background", "");
-            _classes += " " + SettingService.GetSetting(ModuleState.Settings, _namespace + ":Text", "");
-            _classes += " " + SettingService.GetSetting(ModuleState.Settings, _namespace + ":Border", "");
+            if (ModuleState.Settings.TryGetValue(BootswatchContainerSettings.SETTINGS_KEY, out var json))
+            {
+                _ContainerSettings = new BootswatchContainerSettings(json);
+            }
+            else
+            {
+                _ContainerSettings = new BootswatchContainerSettings();
+            }
+
+            _classes += " " + _ContainerSettings.Background;
+            _classes += " " + _ContainerSettings.Text;
+            _classes += " " + _ContainerSettings.Border;
             _classes = _classes.Trim();
         }
         catch

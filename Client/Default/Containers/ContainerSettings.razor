@@ -5,80 +5,73 @@
 @inject ISettingService SettingService
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @attribute [OqtaneIgnore]
-
-<table class="table table-borderless">
-    <tr>
-        <td>
-            <Label For="title" ResourceKey="Title" HelpText="Specify If The Module Title Should Be Displayed">Display Title?</Label>
-        </td>
-        <td>
-            <select id="title" class="form-control" value="@BootswatchContainerSettings.Title" @onchange="@((ChangeEventArgs e) => BootswatchContainerSettings.Title = bool.Parse(e.Value.ToString()))">
-                <option value="True">
-                    @SharedLocalizer["Yes"]
-                </option>
-                <option value="False">
-                    @SharedLocalizer["No"]
-                </option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <Label For="background\" ResourceKey="Background" HelpText="Optionally Specify A Background Color For The Container">Background Color:</Label>
-        </td>
-        <td>
-            <select id="background" class="form-control" @bind="@BootswatchContainerSettings.Background">
-                <option value="">None</option>
-                <option value="bg-primary">Primary</option>
-                <option value="bg-secondary">Secondary</option>
-                <option value="bg-success">Success</option>
-                <option value="bg-danger">Danger</option>
-                <option value="bg-warning">Warning</option>
-                <option value="bg-info">Info</option>
-                <option value="bg-light">Light</option>
-                <option value="bg-dark">Dark</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <Label For="text" ResourceKey="Text" HelpText="Optionally Specify A Text Color For The Container">Text Color:</Label>
-        </td>
-        <td>
-            <select id="text" class="form-control" @bind="@BootswatchContainerSettings.Text">
-                <option value="">None</option>
-                <option value="text-primary">Primary</option>
-                <option value="text-secondary">Secondary</option>
-                <option value="text-success">Success</option>
-                <option value="text-danger">Danger</option>
-                <option value="text-warning">Warning</option>
-                <option value="text-info">Info</option>
-                <option value="text-light">Light</option>
-                <option value="text-dark">Dark</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <Label For="border" ResourceKey="Border" HelpText="Optionally Specify A Border For The Container">Border Color:</Label>
-        </td>
-        <td>
-            <select id="border" class="form-control" @bind="@BootswatchContainerSettings.Border">
-                <option value="">None</option>
-                <option value="border">Default</option>
-                <option value="border border-primary">Primary</option>
-                <option value="border border-secondary">Secondary</option>
-                <option value="border border-success">Success</option>
-                <option value="border border-danger">Danger</option>
-                <option value="border border-warning">Warning</option>
-                <option value="border border-info">Info</option>
-                <option value="border border-light">Light</option>
-                <option value="border border-dark">Dark</option>
-            </select>
-        </td>
-    </tr>
-</table>
-
+@if (BootswatchContainerSettings != null)
+{
+    <div class="container">
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="title" ResourceKey="Title" ResourceType="@_resourceType" HelpText="Specify If The Module Title Should Be Displayed">Display Title?</Label>
+            <div class="col-sm-9">
+                <select id="title" class="form-select" value="@BootswatchContainerSettings.Title.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchContainerSettings.Title = bool.Parse(e.Value.ToString()))">
+                    <option value="True">
+                        @SharedLocalizer["Yes"]
+                    </option>
+                    <option value="False">
+                        @SharedLocalizer["No"]
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="background" ResourceKey="Background" ResourceType="@_resourceType" HelpText="Optionally Specify A Background Color For The Container">Background Color:</Label>
+            <div class="col-sm-9">
+                <select id="background" class="form-select" @bind="@BootswatchContainerSettings.Background">
+                    <option value="">None</option>
+                    <option value="bg-primary">Primary</option>
+                    <option value="bg-secondary">Secondary</option>
+                    <option value="bg-success">Success</option>
+                    <option value="bg-danger">Danger</option>
+                    <option value="bg-warning">Warning</option>
+                    <option value="bg-info">Info</option>
+                    <option value="bg-light">Light</option>
+                    <option value="bg-dark">Dark</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="text" ResourceKey="Text" ResourceType="@_resourceType" HelpText="Optionally Specify A Text Color For The Container">Text Color:</Label>
+            <div class="col-sm-9">
+                <select id="text" class="form-select" @bind="@BootswatchContainerSettings.Text">
+                    <option value="">None</option>
+                    <option value="text-primary">Primary</option>
+                    <option value="text-secondary">Secondary</option>
+                    <option value="text-success">Success</option>
+                    <option value="text-danger">Danger</option>
+                    <option value="text-warning">Warning</option>
+                    <option value="text-info">Info</option>
+                    <option value="text-light">Light</option>
+                    <option value="text-dark">Dark</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="border" ResourceKey="Border" ResourceType="@_resourceType" HelpText="Optionally Specify A Border For The Container">Border Color:</Label>
+            <div class="col-sm-9">
+                <select id="border" class="form-select" @bind="@BootswatchContainerSettings.Border">
+                    <option value="">None</option>
+                    <option value="border">Default</option>
+                    <option value="border border-primary">Primary</option>
+                    <option value="border border-secondary">Secondary</option>
+                    <option value="border border-success">Success</option>
+                    <option value="border border-danger">Danger</option>
+                    <option value="border border-warning">Warning</option>
+                    <option value="border border-info">Info</option>
+                    <option value="border border-light">Light</option>
+                    <option value="border border-dark">Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
+}
 @code {
     private string _resourceType = "StudioElf.Theme.Bootswatch.ContainerSettings, StudioElf.Theme.Bootswatch.Oqtane"; // for localization
     private BootswatchContainerSettings BootswatchContainerSettings;
