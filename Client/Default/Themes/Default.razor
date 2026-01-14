@@ -3,7 +3,7 @@
 @inherits ThemeBase
 @inject ISettingService SettingService
 
-<main role="main" data-bs-theme="@_ThemeSettings.Mode">
+<main role="main">
     <nav class="navbar navbar-dark bg-primary fixed-top">
         @if(_ThemeSettings.Logo)
         {
@@ -144,6 +144,24 @@
         catch
         {
             // error loading theme settings
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("eval", $@"
+                const html = document.documentElement;
+                if (html) {{
+                    html.setAttribute('data-bs-theme', '{_ThemeSettings.Mode}');
+                }}
+            ");
+        }
+        catch
+        {
+            // JS interop error
         }
     }
 }
