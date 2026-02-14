@@ -121,10 +121,11 @@ main {
     border-color: var(--bs-btn-hover-border-color);
 }
 
-.btn-outline-info {
+/*.btn-outline-info {
     background-color: var(--bs-info);
     color: var(--bs-white);
-}
+}*/
+
 
 @media (max-width: 767px) {
     .controls {

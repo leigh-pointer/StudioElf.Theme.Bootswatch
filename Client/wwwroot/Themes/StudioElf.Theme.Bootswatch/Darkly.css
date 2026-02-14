@@ -114,10 +114,11 @@ textarea {
     border-color: var(--bs-btn-hover-border-color);
 }
 
-.btn-outline-info {
+/*.btn-outline-info {
     background-color: var(--bs-info);
     color: var(--bs-white);
-}
+}*/
+
 
 .app-search.bg-primary {
     background-color: transparent !important;
