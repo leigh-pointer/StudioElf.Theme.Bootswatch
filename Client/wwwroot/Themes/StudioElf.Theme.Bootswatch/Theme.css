@@ -148,13 +148,13 @@ body {
 }
 
 main {
-    flex: 1;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .content {
-    flex: 1;
+    min-height: 100vh !important;
     top: 0;
     padding-top: 12rem;
 }

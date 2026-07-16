@@ -1,7 +1,9 @@
 ﻿@namespace StudioElf.Theme.Bootswatch.Default
 @using StudioElf.Theme.Bootswatch.Client
+@* @using StudioElf.Module.MLTextHTML *@
 @inherits ThemeBase
 @inject ISettingService SettingService
+@inject IJSRuntime JSRuntime
 
 <main role="main">
     <nav class="navbar navbar-dark bg-primary fixed-top">
@@ -9,7 +11,7 @@
         {
             <Logo UseSiteNameAsFallback="true" />
         }
-        @if (IsAdminOrHost || _ThemeSettings.Logo)
+        @if (IsAdminOrHost || _ThemeSettings.Menu)
         {
             <Menu Orientation="Horizontal" />
         }
@@ -21,7 +23,8 @@
                 }
                 <UserProfile ShowRegister="@_ThemeSettings.Register" />
                 <Login ShowLogin="@_ThemeSettings.Login" />
-                <ControlPanel LanguageDropdownAlignment="right" />
+                <ControlPanel ShowLanguageSwitcher="@_ThemeSettings.ShowLanguageSwitcher" LanguageDropdownAlignment="right" />
+                @* <StudioElf.Module.MLTextHTML.Client.Themes.Controls.MLSwitcher DropdownAlignment="right" /> *@
             </div>
         </div>
     </nav>
@@ -130,20 +133,21 @@
     {
         try
         {
-            var settings = PageState.Site.Settings;
+            string siteJson = null;
+            string pageJson = null;
 
-            if (settings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out var json))
+            PageState.Site.Settings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out siteJson);
+            if (PageState.Page != null)
             {
-                _ThemeSettings = new BootswatchThemeSettings(json);
+                PageState.Page.Settings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out pageJson);
             }
-            else
-            {
-                _ThemeSettings = new BootswatchThemeSettings();
-            }
+
+            _ThemeSettings = BootswatchThemeSettings.MergeFromJson(siteJson, pageJson);
         }
         catch
         {
             // error loading theme settings
+            _ThemeSettings = new BootswatchThemeSettings();
         }
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)

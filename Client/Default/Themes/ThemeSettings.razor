@@ -1,149 +1,233 @@
 @namespace StudioElf.Theme.Bootswatch
 @using StudioElf.Theme.Bootswatch.Client
+@using System.Text.Json
 @inherits ModuleBase
 @implements Oqtane.Interfaces.ISettingsControl
 @inject ISettingService SettingService
 @inject IStringLocalizer<ThemeSettings> Localizer
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 @attribute [OqtaneIgnore]
-@if (BootswatchThemeSettings != null)
-{
-    <div class="container">
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="logo" ResourceKey="Logo" HelpText="Specify if a Logo should be displayed">Show Logo?</Label>
-            <div class="col-sm-5">
-                <select id="logo" class="form-select" value="@BootswatchThemeSettings.Logo.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Logo = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="menu" ResourceKey="Menu" HelpText="Specify if a Menu should be displayed">Show Menu?</Label>
-            <div class="col-sm-5">
-                <select id="menu" class="form-select" value="@BootswatchThemeSettings.Menu.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Menu = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="login" ResourceKey="Login" HelpText="Specify if a Login option should be displayed. Note that this option does not prevent the login page from being accessible via a direct url.">Show Login?</Label>
-            <div class="col-sm-5">
-                <select id="login" class="form-select" value="@BootswatchThemeSettings.Login.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Login = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="register" ResourceKey="Register" HelpText="Specify if a Register option should be displayed. Note that this option is also dependent on the Allow Registration option in User Settings.">Show Register?</Label>
-            <div class="col-sm-5">
-                <select id="register" class="form-select" value="@BootswatchThemeSettings.Register.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Register = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="search" ResourceKey="Search" HelpText="Specify if a search icon should be displayed">Show Search?</Label>
-            <div class="col-sm-5">
-                <select id="search" class="form-select" value="@BootswatchThemeSettings.Search.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.Search = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="mode" ResourceKey="Mode" HelpText="Specify the Bootstrap theme mode Dark or Light">Mode:</Label>
-            <div class="col-sm-5">
-                <select id="mode" class="form-select" @bind="@BootswatchThemeSettings.Mode">
-                    <option value="light">@SharedLocalizer["Light"]</option>
-                    <option value="dark">@SharedLocalizer["Dark"]</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="AdminWidthFluid" HelpText="Specify the Admin container width %">Admin Width Fluid</Label>
-            <div class="col-sm-5">
-                <select id="ContentWidthFluid" class="form-select" @bind="@BootswatchThemeSettings.AdminWidthFluid">
-                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
-                    <option value="w-50">50%</option>
-                    <option value="w-60">60%</option>
-                    <option value="w-70">70%</option>
-                    <option value="w-75">75%</option>
-                    <option value="w-80">80%</option>
-                    <option value="w-90">90%</option>
-                    <option value="w-100">100%</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="AdminRemoveGutter" ResourceKey="AdminRemoveGutter" HelpText="Admin Remove Guttering">Admin Remove Gutter</Label>
-            <div class="col-sm-5">
-                <select id="AdminRemoveGutter" class="form-select" value="@BootswatchThemeSettings.AdminRemoveGutter.ToString()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.AdminRemoveGutter = bool.Parse(e.Value.ToString()))">
-                    <option value="True">
-                        @SharedLocalizer["Yes"]
-                    </option>
-                    <option value="False">
-                        @SharedLocalizer["No"]
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentWidthFluid" ResourceKey="ContentWidthFluid" HelpText="Specify the content container width %">Content Width Fluid</Label>
-            <div class="col-sm-5">
-                <select id="ContentWidthFluid" class="form-select" @bind="@BootswatchThemeSettings.ContentWidthFluid">
-                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
-                    <option value="w-50">50%</option>
-                    <option value="w-60">60%</option>
-                    <option value="w-70">70%</option>
-                    <option value="w-75">75%</option>
-                    <option value="w-80">80%</option>
-                    <option value="w-90">90%</option>
-                    <option value="w-100">100%</option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="ContentRemoveGutter" ResourceKey="ContentRemoveGutter" HelpText="Content Remove Guttering">Content Remove Gutter</Label>
-            <div class="col-sm-5">
-                <select id="ContentWidthFluid" class="form-select" value="@BootswatchThemeSettings.ContentRemoveGutter.ToString().ToLower()" @onchange="@((ChangeEventArgs e) => BootswatchThemeSettings.ContentRemoveGutter = bool.Parse(e.Value.ToString()))">
-                    <option value="true">@SharedLocalizer["Yes"]</option>
-                    <option value="false">@SharedLocalizer["No"]</option>
-                </select>
-            </div>
+
+<div class="container">
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="scope" ResourceKey="Scope" HelpText="Specify if settings apply to the entire site or only the active page.">Setting Scope:</Label>
+        <div class="col-sm-5">
+            <select id="scope" class="form-select" value="@_scope" @onchange="ScopeChanged">
+                @if (UserSecurity.IsAuthorized(PageState.User, RoleNames.Admin))
+                {
+                    <option value="site">@Localizer["Site"]</option>
+                }
+                <option value="page">@Localizer["Page"]</option>
+            </select>
         </div>
     </div>
-}
+
+    @if (_scope == "page")
+    {
+        <div class="row mb-3">
+            <div class="col">
+                <div class="alert alert-info">
+                    <strong>Page Settings:</strong> "Use Site Default" inherits site value. "Not Specified" (where available) saves '-' for this page.
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="logo" ResourceKey="Logo" HelpText="Specify if a Logo should be displayed">Show Logo?</Label>
+        <div class="col-sm-5">
+            <select id="logo" class="form-select" @bind="_logo">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="menu" ResourceKey="Menu" HelpText="Specify if a Menu should be displayed for users. Host and Admin users will always see the menu when logged in.">Show Menu?</Label>
+        <div class="col-sm-5">
+            <select id="menu" class="form-select" @bind="_menu">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="login" ResourceKey="Login" HelpText="Specify if a Login option should be displayed">Show Login?</Label>
+        <div class="col-sm-5">
+            <select id="login" class="form-select" @bind="_login">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="register" ResourceKey="Register" HelpText="Specify if a Register option should be displayed">Show Register?</Label>
+        <div class="col-sm-5">
+            <select id="register" class="form-select" @bind="_register">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="search" ResourceKey="Search" HelpText="Specify if a search icon should be displayed">Show Search?</Label>
+        <div class="col-sm-5">
+            <select id="search" class="form-select" @bind="_search">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="showLanguageSwitcher" ResourceKey="ShowLanguageSwitcher" HelpText="Specify if the language switcher should be displayed in the control panel">Show Language Switcher?</Label>
+        <div class="col-sm-5">
+            <select id="showLanguageSwitcher" class="form-select" @bind="_showLanguageSwitcher">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="mode" ResourceKey="Mode" HelpText="Specify the Bootstrap theme mode Dark or Light">Mode:</Label>
+        <div class="col-sm-5">
+            <select id="mode" class="form-select" @bind="_mode">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="light">@SharedLocalizer["Light"]</option>
+                <option value="dark">@SharedLocalizer["Dark"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="adminWidthFluid" ResourceKey="AdminWidthFluid" HelpText="Specify the Admin container width %">Admin Width Fluid</Label>
+        <div class="col-sm-5">
+            <select id="adminWidthFluid" class="form-select" @bind="_adminWidthFluid">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
+                }
+                else
+                {
+                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
+                }
+                <option value="w-50">50%</option>
+                <option value="w-60">60%</option>
+                <option value="w-70">70%</option>
+                <option value="w-75">75%</option>
+                <option value="w-80">80%</option>
+                <option value="w-90">90%</option>
+                <option value="w-100">100%</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="adminRemoveGutter" ResourceKey="AdminRemoveGutter" HelpText="Admin Remove Guttering">Admin Remove Gutter</Label>
+        <div class="col-sm-5">
+            <select id="adminRemoveGutter" class="form-select" @bind="_adminRemoveGutter">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="contentWidthFluid" ResourceKey="ContentWidthFluid" HelpText="Specify the content container width %">Content Width Fluid</Label>
+        <div class="col-sm-5">
+            <select id="contentWidthFluid" class="form-select" @bind="_contentWidthFluid">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
+                }
+                else
+                {
+                    <option value="-">&lt;@SharedLocalizer["Not Specified"]&gt;</option>
+                }
+                <option value="w-50">50%</option>
+                <option value="w-60">60%</option>
+                <option value="w-70">70%</option>
+                <option value="w-75">75%</option>
+                <option value="w-80">80%</option>
+                <option value="w-90">90%</option>
+                <option value="w-100">100%</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-1 align-items-center">
+        <Label Class="col-sm-3" For="contentRemoveGutter" ResourceKey="ContentRemoveGutter" HelpText="Content Remove Guttering">Content Remove Gutter</Label>
+        <div class="col-sm-5">
+            <select id="contentRemoveGutter" class="form-select" @bind="_contentRemoveGutter">
+                @if (_scope == "page")
+                {
+                    <option value="">&lt;@SharedLocalizer["Use Site Default"]&gt;</option>
+                }
+                <option value="True">@SharedLocalizer["Yes"]</option>
+                <option value="False">@SharedLocalizer["No"]</option>
+            </select>
+        </div>
+    </div>
+</div>
+
 @code {
-    //private string _resourceType = "StudioElf.Theme.Bootswatch.ThemeSettings, StudioElf.Theme.Bootswatch.Oqtane"; // for localization
-    private BootswatchThemeSettings BootswatchThemeSettings;
+    private string _scope = "site";
+    private int _pageId = -1;
+
+    private string _logo = "True";
+    private string _menu = "True";
+    private string _login = "True";
+    private string _register = "True";
+    private string _search = "True";
+    private string _showLanguageSwitcher = "False";
+    private string _mode = "light";
+    private string _adminWidthFluid = "-";
+    private string _adminRemoveGutter = "False";
+    private string _contentWidthFluid = "-";
+    private string _contentRemoveGutter = "False";
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
+            if (PageState.QueryString.ContainsKey("id"))
+            {
+                _pageId = int.Parse(PageState.QueryString["id"]);
+            }
+            else if (PageState.Page != null)
+            {
+                _pageId = PageState.Page.PageId;
+            }
+
+            _scope = UserSecurity.IsAuthorized(PageState.User, RoleNames.Admin) ? "site" : "page";
             await LoadSettings();
         }
         catch (Exception ex)
@@ -153,17 +237,72 @@
         }
     }
 
+    private async Task ScopeChanged(ChangeEventArgs eventArgs)
+    {
+        _scope = eventArgs.Value?.ToString() ?? "site";
+        await LoadSettings();
+        StateHasChanged();
+    }
+
     private async Task LoadSettings()
     {
-        var settings = PageState.Site.Settings;
-
-        if (settings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out var json))
+        if (_scope == "site")
         {
-            BootswatchThemeSettings = new BootswatchThemeSettings(json);
+            // Load full settings JSON from site
+            var siteSettings = PageState.Site.Settings;
+            siteSettings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out var siteJson);
+            var theme = BootswatchThemeSettings.FromJson(siteJson);
+
+            // Populate UI with site values
+            _logo = theme.Logo ? "True" : "False";
+            _menu = theme.Menu ? "True" : "False";
+            _login = theme.Login ? "True" : "False";
+            _register = theme.Register ? "True" : "False";
+            _search = theme.Search ? "True" : "False";
+            _showLanguageSwitcher = theme.ShowLanguageSwitcher ? "True" : "False";
+            _mode = string.IsNullOrEmpty(theme.Mode) ? "light" : theme.Mode;
+            _adminWidthFluid = string.IsNullOrEmpty(theme.AdminWidthFluid) ? "-" : theme.AdminWidthFluid;
+            _adminRemoveGutter = theme.AdminRemoveGutter ? "True" : "False";
+            _contentWidthFluid = string.IsNullOrEmpty(theme.ContentWidthFluid) ? "-" : theme.ContentWidthFluid;
+            _contentRemoveGutter = theme.ContentRemoveGutter ? "True" : "False";
         }
         else
         {
-            BootswatchThemeSettings = new BootswatchThemeSettings();
+            // Load page-level JSON (partial) and determine which properties are overridden
+            var pageSettings = await SettingService.GetPageSettingsAsync(_pageId);
+            pageSettings.TryGetValue(BootswatchThemeSettings.SETTINGS_KEY, out var pageJson);
+
+            if (string.IsNullOrWhiteSpace(pageJson))
+            {
+                _logo = string.Empty;
+                _menu = string.Empty;
+                _login = string.Empty;
+                _register = string.Empty;
+                _search = string.Empty;
+                _showLanguageSwitcher = string.Empty;
+                _mode = string.Empty;
+                _adminWidthFluid = string.Empty;
+                _adminRemoveGutter = string.Empty;
+                _contentWidthFluid = string.Empty;
+                _contentRemoveGutter = string.Empty;
+                await Task.Yield();
+                return;
+            }
+
+            using var doc = JsonDocument.Parse(pageJson);
+            var root = doc.RootElement;
+
+            _logo = root.TryGetProperty("Logo", out var p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _menu = root.TryGetProperty("Menu", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _login = root.TryGetProperty("Login", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _register = root.TryGetProperty("Register", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _search = root.TryGetProperty("Search", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _showLanguageSwitcher = root.TryGetProperty("ShowLanguageSwitcher", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _mode = root.TryGetProperty("Mode", out p) ? (p.GetString() ?? string.Empty) : string.Empty;
+            _adminWidthFluid = root.TryGetProperty("AdminWidthFluid", out p) ? (p.GetString() ?? string.Empty) : string.Empty;
+            _adminRemoveGutter = root.TryGetProperty("AdminRemoveGutter", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
+            _contentWidthFluid = root.TryGetProperty("ContentWidthFluid", out p) ? (p.GetString() ?? string.Empty) : string.Empty;
+            _contentRemoveGutter = root.TryGetProperty("ContentRemoveGutter", out p) ? (p.GetBoolean() ? "True" : "False") : string.Empty;
         }
 
         await Task.Yield();
@@ -173,22 +312,56 @@
     {
         try
         {
-            // Refresh JSON from the object
-            BootswatchThemeSettings.Sync();
+            if (_scope == "site")
+            {
+                var settings = await SettingService.GetSiteSettingsAsync(PageState.Site.SiteId);
 
-            // Load existing settings dictionary
-            var settings = await SettingService.GetSiteSettingsAsync(PageState.Site.SiteId);
+                var theme = new BootswatchThemeSettings
+                {
+                    Logo = string.Equals(_logo, "True", StringComparison.OrdinalIgnoreCase),
+                    Menu = string.Equals(_menu, "True", StringComparison.OrdinalIgnoreCase),
+                    Login = string.Equals(_login, "True", StringComparison.OrdinalIgnoreCase),
+                    Register = string.Equals(_register, "True", StringComparison.OrdinalIgnoreCase),
+                    Search = string.Equals(_search, "True", StringComparison.OrdinalIgnoreCase),
+                    ShowLanguageSwitcher = string.Equals(_showLanguageSwitcher, "True", StringComparison.OrdinalIgnoreCase),
+                    Mode = string.IsNullOrEmpty(_mode) ? "light" : _mode,
+                    AdminWidthFluid = string.IsNullOrEmpty(_adminWidthFluid) ? "-" : _adminWidthFluid,
+                    AdminRemoveGutter = string.Equals(_adminRemoveGutter, "True", StringComparison.OrdinalIgnoreCase),
+                    ContentWidthFluid = string.IsNullOrEmpty(_contentWidthFluid) ? "-" : _contentWidthFluid,
+                    ContentRemoveGutter = string.Equals(_contentRemoveGutter, "True", StringComparison.OrdinalIgnoreCase)
+                };
 
-            // Store the entire settings object as JSON
-            settings = SettingService.SetSetting(
-                settings,
-                BootswatchThemeSettings.SETTINGS_KEY,
-                BootswatchThemeSettings.Serialized
-            );
+                settings = SettingService.SetSetting(settings, BootswatchThemeSettings.SETTINGS_KEY, theme.ToJson());
+                await SettingService.UpdateSiteSettingsAsync(settings, PageState.Site.SiteId);
+            }
+            else
+            {
+                var settings = await SettingService.GetPageSettingsAsync(_pageId);
+                var overrides = new Dictionary<string, object>();
 
-            // Save back to database
-            await SettingService.UpdateSiteSettingsAsync(settings, PageState.Site.SiteId);
+                if (!string.IsNullOrEmpty(_logo)) overrides["Logo"] = string.Equals(_logo, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_menu)) overrides["Menu"] = string.Equals(_menu, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_login)) overrides["Login"] = string.Equals(_login, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_register)) overrides["Register"] = string.Equals(_register, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_search)) overrides["Search"] = string.Equals(_search, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_showLanguageSwitcher)) overrides["ShowLanguageSwitcher"] = string.Equals(_showLanguageSwitcher, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_mode)) overrides["Mode"] = _mode;
+                if (!string.IsNullOrEmpty(_adminWidthFluid)) overrides["AdminWidthFluid"] = _adminWidthFluid;
+                if (!string.IsNullOrEmpty(_adminRemoveGutter)) overrides["AdminRemoveGutter"] = string.Equals(_adminRemoveGutter, "True", StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrEmpty(_contentWidthFluid)) overrides["ContentWidthFluid"] = _contentWidthFluid;
+                if (!string.IsNullOrEmpty(_contentRemoveGutter)) overrides["ContentRemoveGutter"] = string.Equals(_contentRemoveGutter, "True", StringComparison.OrdinalIgnoreCase);
 
+                if (overrides.Count == 0)
+                {
+                    settings.Remove(BootswatchThemeSettings.SETTINGS_KEY);
+                }
+                else
+                {
+                    settings = SettingService.SetSetting(settings, BootswatchThemeSettings.SETTINGS_KEY, JsonSerializer.Serialize(overrides));
+                }
+
+                await SettingService.UpdatePageSettingsAsync(settings, _pageId);
+            }
         }
         catch (Exception ex)
         {

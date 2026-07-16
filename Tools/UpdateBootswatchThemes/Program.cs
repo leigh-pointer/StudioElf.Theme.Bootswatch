@@ -270,6 +270,7 @@ class Program
     {
         return $@"using Oqtane.Models;
 using Oqtane.Themes;
+using StudioElf.Theme.Bootswatch.Client;
 using System.Collections.Generic;
 
 namespace StudioElf.Theme.Bootswatch.{themeTitle}
@@ -279,7 +280,7 @@ namespace StudioElf.Theme.Bootswatch.{themeTitle}
         public Oqtane.Models.Theme Theme => new Oqtane.Models.Theme
         {{
             Name = ""Bootswatch {themeTitle}"",
-            Version = ""{version}"",
+            Version = VersionInfo.Version,
             ThemeSettingsType = ""StudioElf.Theme.Bootswatch.ThemeSettings, StudioElf.Theme.Bootswatch.Oqtane"",
             ContainerSettingsType = ""StudioElf.Theme.Bootswatch.ContainerSettings, StudioElf.Theme.Bootswatch.Oqtane"",
             PackageName = ""StudioElf.Theme.Bootswatch"",

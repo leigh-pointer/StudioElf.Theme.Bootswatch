@@ -8,7 +8,4 @@
 	<ItemGroup>
 	<ProjectReference Include="..\..\..\oqtane.framework\Oqtane.Shared\Oqtane.Shared.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="System.Text.Json" Version="10.0.0" />
-	</ItemGroup>
 </Project>

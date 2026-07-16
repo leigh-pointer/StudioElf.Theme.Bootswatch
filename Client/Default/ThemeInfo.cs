@@ -1,4 +1,4 @@
-﻿using Oqtane.Models;
+using Oqtane.Models;
 using Oqtane.Themes;
 using StudioElf.Theme.Bootswatch.Client;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace StudioElf.Theme.Bootswatch.Default
         public Oqtane.Models.Theme Theme => new Oqtane.Models.Theme
         {
             Name = "Bootswatch Default",
-            Version = "10.0.0",
+            Version = VersionInfo.Version,
             ThemeSettingsType = "StudioElf.Theme.Bootswatch.ThemeSettings, StudioElf.Theme.Bootswatch.Oqtane",
             ContainerSettingsType = "StudioElf.Theme.Bootswatch.ContainerSettings, StudioElf.Theme.Bootswatch.Oqtane",
             PackageName = "StudioElf.Theme.Bootswatch",
