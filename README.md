@@ -1,8 +1,6 @@
 # StudioElf Bootswatch Theme Collection
 
-🎨 **Version:** [6.5.3.8](https://github.com/studioelf/studioelf.theme.bootswatch/releases)  
-🗓️ **Last Updated:** November 2025  
-⚙️ **Compatible with:** Oqtane Framework 6.2+
+⚙️ **Compatible with:** Oqtane Framework 10+
 
 ---
 
