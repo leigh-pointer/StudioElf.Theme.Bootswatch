@@ -353,14 +353,16 @@
 
                 if (overrides.Count == 0)
                 {
-                    settings.Remove(BootswatchThemeSettings.SETTINGS_KEY);
+                    // Bulk settings updates do not delete keys that are absent from the
+                    // submitted dictionary. Delete the page override explicitly so the
+                    // site value becomes effective again.
+                    await SettingService.DeleteSettingAsync(EntityNames.Page, _pageId, BootswatchThemeSettings.SETTINGS_KEY);
                 }
                 else
                 {
                     settings = SettingService.SetSetting(settings, BootswatchThemeSettings.SETTINGS_KEY, JsonSerializer.Serialize(overrides));
+                    await SettingService.UpdatePageSettingsAsync(settings, _pageId);
                 }
-
-                await SettingService.UpdatePageSettingsAsync(settings, _pageId);
             }
         }
         catch (Exception ex)

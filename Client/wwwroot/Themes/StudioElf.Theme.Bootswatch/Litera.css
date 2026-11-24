@@ -32,7 +32,6 @@ main {
 .controls-group {
     display: flex;
     gap: 10px;
-    align-items: center;
 }
 
 .app-search.me-3 {
@@ -115,17 +114,11 @@ main {
     color: var(--bs-white);
 }*/
 
-
 .app-search.bg-primary {
     background-color: transparent !important;
 }
 
 @media (max-width: 767px) {
-    .btn {
-        border-radius: 10px;
-        padding: 0.75rem 0.75rem;
-    }
-
     .controls {
         height: auto;
         padding-left: 8px;
@@ -142,7 +135,7 @@ main {
     }
 
     .navbar {
-        top: 76px;
+        top: 67px;
     }
 }
 
@@ -191,6 +184,7 @@ main {
 .btn.btn-search .align-middle {
     vertical-align: unset !important;
 }
+
 .btn.btn-search:hover,
 .btn.btn-search:focus,
 .btn.btn-search:active {
@@ -206,7 +200,14 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -267,7 +268,6 @@ main {
 
 [data-bs-theme="dark"] .offcanvas-body .btn.btn-secondary {
     background-color: var(--bs-secondary);
-    color: var(--bs-border-color);
 }
 
 [data-bs-theme="dark"] .offcanvas-body .btn.btn-danger {
@@ -278,11 +278,7 @@ main {
 [data-bs-theme="dark"] .form-control,
 [data-bs-theme="dark"] .form-select {
     background-color: var(--bs-body-bg);
-}
-
-[data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select {
-    border-color: var(--bs-border-color);
+    color: var(--bs-white);
 }
 
 [data-bs-theme="dark"] .navbar .app-search .form-control {

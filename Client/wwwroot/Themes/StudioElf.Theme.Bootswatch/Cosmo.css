@@ -21,7 +21,7 @@ main {
 
 @media (min-width: 890px) {
     .content {
-        padding-top: 7rem;
+        padding-top: 9rem;
     }
 }
 
@@ -114,6 +114,9 @@ main {
     color: var(--bs-white);
 }*/
 
+.app-search.bg-primary {
+    background-color: transparent !important;
+}
 
 @media (max-width: 767px) {
     .controls {
@@ -148,8 +151,6 @@ main {
     border-color: var(--bs-white);
 
     &.ms-1 {
-        display: flex;
-        align-items: center;
         margin-left: 0 !important;
     }
 }
@@ -173,8 +174,15 @@ main {
 .btn.btn-search {
     box-shadow: none;
     padding: 5px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.15s ease-in-out, border 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.btn.btn-search .align-middle {
+    vertical-align: unset !important;
 }
 
 .btn.btn-search:hover,
@@ -187,13 +195,19 @@ main {
 
 .dropdown-menu[data-bs-popper] a {
     color: var(--bs-body-color);
-    border-radius: 0;
 }
 
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -214,6 +228,7 @@ main {
 .tab-pane .row.mt-2 .col {
     margin-bottom: 1rem !important;
 }
+
 .tab-pane .col.text-center.pb-2 {
     font-size: 1.15rem;
     font-weight: bold;
@@ -264,11 +279,6 @@ main {
 [data-bs-theme="dark"] .form-select {
     background-color: var(--bs-body-bg);
     color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select {
-    border-color: var(--bs-border-color);
 }
 
 [data-bs-theme="dark"] .navbar .app-search .form-control {

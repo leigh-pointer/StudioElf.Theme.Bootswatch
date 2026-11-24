@@ -139,6 +139,34 @@ main {
     }
 }
 
+/* Tablet range: force collapsed hamburger navigation up to 1279px.
+   The full horizontal menu (~914px) + logo + controls cannot fit below 1280,
+   so the bootstrap "expanded" state is suppressed: the toggler is shown and
+   the menu only renders as a full-width column once opened. */
+@media (min-width: 768px) and (max-width: 1279.98px) {
+    .app-menu {
+        width: 100%;
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-expand-md .navbar-collapse {
+        display: none !important;
+    }
+
+    .navbar-expand-md .navbar-collapse.show {
+        display: flex !important;
+        max-height: calc(100vh - 180px);
+        overflow-y: auto;
+    }
+
+    .navbar-expand-md .navbar-nav {
+        flex-direction: column;
+    }
+}
+
 .controls-group .btn.btn-primary {
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
 }
@@ -200,14 +228,31 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
 .navbar-nav .dropdown-menu {
     padding: 0.5rem;
-    width: 98%;
-    margin: 0 auto;
+    width: max-content;
+    min-width: 100%;
+    max-width: min(90vw, 30rem);
+    margin: 0;
+}
+
+.navbar-nav .dropdown-menu .nav-link {
+    height: auto;
+    min-height: 3rem;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .tab-pane .row.mb-1 {
@@ -307,4 +352,11 @@ main {
 
 [data-bs-theme="dark"] .app-admin-modal h2 .oi:empty:before {
     color: var(--bs-primary);
+}
+
+
+/* Keep a dropdown's parent visibly active while one of its child pages is open. */
+.app-menu .nav-item.dropdown:has(> .dropdown-menu .nav-link.active) > .nav-link {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
 }

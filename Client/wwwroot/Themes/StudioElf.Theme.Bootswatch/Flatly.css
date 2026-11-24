@@ -1,4 +1,5 @@
 /* CSS overrides */
+
 body {
     display: flex;
     flex-direction: column;
@@ -35,12 +36,6 @@ main {
 
 .app-search.me-3 {
     margin-right: 0 !important;
-}
-
-.controls-group .btn.btn-outline-secondary {
-    &.ms-1 {
-        margin-left: 0 !important;
-    }
 }
 
 .btn-primary {
@@ -119,6 +114,10 @@ main {
     color: var(--bs-white);
 }*/
 
+.app-search.bg-primary {
+    background-color: transparent !important;
+}
+
 @media (max-width: 767px) {
     .controls {
         height: auto;
@@ -141,18 +140,49 @@ main {
 }
 
 .controls-group .btn.btn-primary {
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
 }
 
 .controls-group .offcanvas-body .btn.btn-primary {
     box-shadow: none;
 }
 
+.controls-group .btn.btn-outline-secondary {
+    border-color: var(--bs-white);
+
+    &.ms-1 {
+        margin-left: 0 !important;
+    }
+}
+
+.controls-group .btn.btn-outline-secondary:hover,
+.controls-group .btn.btn-outline-secondary:focus,
+.controls-group .btn.btn-outline-secondary:active {
+    background-color: var(--bs-white);
+}
+
+.controls-group .btn.btn-outline-secondary span {
+    color: var(--bs-white);
+}
+
+.controls-group .btn.btn-outline-secondary:hover span,
+.controls-group .btn.btn-outline-secondary:focus span,
+.controls-group .btn.btn-outline-secondary:active span {
+    color: var(--bs-primary);
+}
+
 .btn.btn-search {
     box-shadow: none;
     padding: 5px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.15s ease-in-out, border 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.btn.btn-search .align-middle {
+    vertical-align: unset !important;
 }
 
 .btn.btn-search:hover,
@@ -170,7 +200,14 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -225,23 +262,27 @@ main {
     color: var(--bs-white);
 }
 
-[data-bs-theme="dark"] .btn.btn-search:hover,
-[data-bs-theme="dark"] .btn.btn-search:focus,
-[data-bs-theme="dark"] .btn.btn-search:active {
-    color: var(--bs-btn-color);
-    opacity: 0.5;
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-primary {
+    background-color: var(--bs-primary);
+}
+
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-secondary {
+    background-color: var(--bs-secondary);
+}
+
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-danger {
+    background-color: var(--bs-danger);
 }
 
 [data-bs-theme="dark"] .content,
 [data-bs-theme="dark"] .form-control,
 [data-bs-theme="dark"] .form-select {
     background-color: var(--bs-body-bg);
+    color: var(--bs-white);
 }
 
-@media (max-width: 767px) {
-    [data-bs-theme="dark"] .app-search.bg-primary {
-        background-color: var(--bs-black) !important;
-    }
+[data-bs-theme="dark"] .navbar .app-search .form-control {
+    border-color: var(--bs-body-bg);
 }
 
 [data-bs-theme="dark"] [contenteditable].form-control[disabled],

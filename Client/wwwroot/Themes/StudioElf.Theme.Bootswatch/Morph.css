@@ -168,8 +168,8 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
-    background-color: var(--bs-primary);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
 }
 
 .navbar-nav .dropdown-menu {
@@ -234,8 +234,8 @@ main {
 [data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
 [data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
 [data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
-    background-color: var(--bs-primary);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
 }
 
 [data-bs-theme="dark"] .offcanvas-body .btn.btn-danger {

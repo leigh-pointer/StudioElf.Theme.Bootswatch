@@ -19,7 +19,7 @@ main {
     padding-top: 12rem;
 }
 
-@media (min-width: 875px) {
+@media (min-width: 890px) {
     .content {
         padding-top: 9rem;
     }
@@ -32,19 +32,10 @@ main {
 .controls-group {
     display: flex;
     gap: 10px;
-    align-items: center;
 }
 
 .app-search.me-3 {
     margin-right: 0 !important;
-}
-
-.card-body {
-    background-color: #073642;
-}
-
-.card-header {
-    background-color: #d8b64c;
 }
 
 .btn-primary {
@@ -123,7 +114,6 @@ main {
     color: var(--bs-white);
 }*/
 
-
 .app-search.bg-primary {
     background-color: transparent !important;
 }
@@ -184,8 +174,15 @@ main {
 .btn.btn-search {
     box-shadow: none;
     padding: 5px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.15s ease-in-out, border 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.btn.btn-search .align-middle {
+    vertical-align: unset !important;
 }
 
 .btn.btn-search:hover,
@@ -203,7 +200,14 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -254,63 +258,31 @@ main {
 /* Dark Mode Overwrides */
 
 [data-bs-theme="dark"] {
-    --bs-body-bg: #212529;
-}
-
-[data-bs-theme="dark"] .btn.btn-primary {
-    background-color: var(--bs-primary);
-}
-
-[data-bs-theme="dark"] .btn.btn-secondary {
-    background-color: var(--bs-secondary);
-}
-
-[data-bs-theme="dark"] .btn.btn-success {
-    color: var(--bs-body-bg);
-}
-
-[data-bs-theme="dark"] .btn.btn-danger {
-    background-color: var(--bs-danger);
-}
-
-[data-bs-theme="dark"] .form-control {
-    color: var(--bs-border-color);
-}
-
-[data-bs-theme="dark"] .offcanvas-title {
+    background-color: var(--bs-body-bg);
     color: var(--bs-white);
 }
 
-[data-bs-theme="dark"] .content {
-    background-color: var(--bs-body-bg);
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-primary {
+    background-color: var(--bs-primary);
+}
+
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-secondary {
+    background-color: var(--bs-secondary);
+}
+
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-danger {
+    background-color: var(--bs-danger);
 }
 
 [data-bs-theme="dark"] .content,
 [data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select,
-[data-bs-theme="dark"] .app-search.bg-primary .form-control {
+[data-bs-theme="dark"] .form-select {
     background-color: var(--bs-body-bg);
-    border-color: var(--bs-border-color);
     color: var(--bs-white);
 }
 
-[data-bs-theme="dark"] .modal-content {
-    color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .h1,
-[data-bs-theme="dark"] .h2,
-[data-bs-theme="dark"] .h3,
-[data-bs-theme="dark"] .h4,
-[data-bs-theme="dark"] .h5,
-[data-bs-theme="dark"] .h6,
-[data-bs-theme="dark"] h1,
-[data-bs-theme="dark"] h2,
-[data-bs-theme="dark"] h3,
-[data-bs-theme="dark"] h4,
-[data-bs-theme="dark"] h5,
-[data-bs-theme="dark"] h6 {
-    color: var(--bs-white);
+[data-bs-theme="dark"] .navbar .app-search .form-control {
+    border-color: var(--bs-body-bg);
 }
 
 [data-bs-theme="dark"] [contenteditable].form-control[disabled],
@@ -338,18 +310,6 @@ main {
 [data-bs-theme="dark"] textarea[disabled],
 [data-bs-theme="dark"] textarea[disabled]::placeholder {
     color: var(--bs-border-color);
-}
-
-[data-bs-theme="dark"] .btn-close {
-    filter: none;
-}
-
-[data-bs-theme="dark"] .nav-tabs {
-    border-bottom-color: var(--bs-body-bg);
-}
-
-.nav-tabs {
-    border-bottom-color: var(--bs-nav-tabs-link-active-bg);
 }
 
 [data-bs-theme="dark"] .app-admin-modal h2 .oi:empty:before {

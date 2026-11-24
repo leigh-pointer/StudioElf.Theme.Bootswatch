@@ -19,7 +19,7 @@ namespace StudioElf.Theme.Bootswatch.Solar
                 new Stylesheet("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.8/solar/bootstrap.min.css", "sha512-WsG23kaD+dsGXIcKV5j1byPaxHDG1t68ki8Ixiy1dzq5EG8GaKpJIqhkblImUWKba2lLW8/eFAZSRZn8JwMQXA==", "anonymous"),
                 new Stylesheet("Themes/StudioElf.Theme.Bootswatch/Theme.css"),
                 new Stylesheet($"Themes/StudioElf.Theme.Bootswatch/Solar.css"),
-                new Script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js", "sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw==", "anonymous")
+                new Script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.9/js/bootstrap.bundle.min.js", "sha512-e+7khtwPXnlvjbSjbxVllU8uzgqxAQhYZ1II5AyKC8G/IGlMsYo+YaUUea4Dnfv6adjq7+dOMPXFKOPTPfHJAQ==", "anonymous")
             }
         };
     }

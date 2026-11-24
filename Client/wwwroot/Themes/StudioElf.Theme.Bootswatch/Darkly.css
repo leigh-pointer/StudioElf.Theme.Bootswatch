@@ -38,11 +38,6 @@ main {
     margin-right: 0 !important;
 }
 
-input[type="text"],
-textarea {
-    background-color: var(--bs-white);
-}
-
 .btn-primary {
     background-color: var(--bs-primary);
     color: var(--bs-white);
@@ -119,7 +114,6 @@ textarea {
     color: var(--bs-white);
 }*/
 
-
 .app-search.bg-primary {
     background-color: transparent !important;
 }
@@ -179,9 +173,16 @@ textarea {
 
 .btn.btn-search {
     box-shadow: none;
-    color: #222;
+    padding: 5px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.15s ease-in-out, border 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.btn.btn-search .align-middle {
+    vertical-align: unset !important;
 }
 
 .btn.btn-search:hover,
@@ -199,7 +200,14 @@ textarea {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -273,21 +281,8 @@ textarea {
     color: var(--bs-white);
 }
 
-[data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select {
-    border-color: var(--bs-border-color);
-}
-
 [data-bs-theme="dark"] .navbar .app-search .form-control {
     border-color: var(--bs-body-bg);
-}
-
-[data-bs-theme="dark"] .btn-close {
-    filter: none;
-}
-
-[data-bs-theme="dark"] .btn.btn-search .oi-magnifying-glass:before {
-    color: var(--bs-gray-300);
 }
 
 [data-bs-theme="dark"] [contenteditable].form-control[disabled],

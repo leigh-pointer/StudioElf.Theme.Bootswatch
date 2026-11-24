@@ -19,7 +19,7 @@ namespace StudioElf.Theme.Bootswatch.Litera
                 new Stylesheet("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.8/litera/bootstrap.min.css", "sha512-y5EvUEDZeJ42R+0eUkBHEQFZX0YWi2izjUc4Bfd0s3NAifdd+ya2HLfo3leQyLYO2ZmANFtE1IwHRh5EO2iI/w==", "anonymous"),
                 new Stylesheet("Themes/StudioElf.Theme.Bootswatch/Theme.css"),
                 new Stylesheet($"Themes/StudioElf.Theme.Bootswatch/Litera.css"),
-                new Script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js", "sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw==", "anonymous")
+                new Script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.9/js/bootstrap.bundle.min.js", "sha512-e+7khtwPXnlvjbSjbxVllU8uzgqxAQhYZ1II5AyKC8G/IGlMsYo+YaUUea4Dnfv6adjq7+dOMPXFKOPTPfHJAQ==", "anonymous")
             }
         };
     }

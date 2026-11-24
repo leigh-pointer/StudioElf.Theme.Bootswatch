@@ -19,7 +19,7 @@ main {
     padding-top: 12rem;
 }
 
-@media (min-width: 878px) {
+@media (min-width: 890px) {
     .content {
         padding-top: 9rem;
     }
@@ -32,27 +32,10 @@ main {
 .controls-group {
     display: flex;
     gap: 10px;
-    align-items: center;
 }
 
 .app-search.me-3 {
     margin-right: 0 !important;
-}
-
-.card {
-    background-color: #1a0a33;
-}
-
-.table .form-control {
-    background-color: transparent !important;
-}
-
-.table .form-select {
-    background-color: transparent !important;
-}
-
-option {
-    background-color: #ad82fc !important;
 }
 
 .btn-primary {
@@ -131,7 +114,6 @@ option {
     color: var(--bs-white);
 }*/
 
-
 .app-search.bg-primary {
     background-color: transparent !important;
 }
@@ -192,8 +174,15 @@ option {
 .btn.btn-search {
     box-shadow: none;
     padding: 5px;
+    height: 24px;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.15s ease-in-out, border 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.btn.btn-search .align-middle {
+    vertical-align: unset !important;
 }
 
 .btn.btn-search:hover,
@@ -206,13 +195,19 @@ option {
 
 .dropdown-menu[data-bs-popper] a {
     color: var(--bs-body-color);
-    border-radius: 0;
 }
 
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* dark mode: dropdown hover vars are not remapped by bootswatch, so force a visible background */
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-primary);
 }
 
@@ -255,20 +250,12 @@ option {
     margin-top: 1rem;
 }
 
-.offcanvas-header .btn-close {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
-}
-
 .tab-pane.active > .container,
 .collapse.show {
     margin-bottom: 3rem;
 }
 
 /* Dark Mode Overwrides */
-
-[data-bs-theme="dark"] {
-    --bs-body-bg: #212529;
-}
 
 [data-bs-theme="dark"] {
     background-color: var(--bs-body-bg);
@@ -279,17 +266,12 @@ option {
     background-color: var(--bs-primary);
 }
 
-[data-bs-theme="dark"] .btn.btn-secondary {
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-secondary {
     background-color: var(--bs-secondary);
 }
 
-[data-bs-theme="dark"] .btn.btn-success {
-    color: var(--bs-body-bg);
-}
-
-[data-bs-theme="dark"] .btn.btn-danger {
+[data-bs-theme="dark"] .offcanvas-body .btn.btn-danger {
     background-color: var(--bs-danger);
-    color: var(--bs-white);
 }
 
 [data-bs-theme="dark"] .content,
@@ -299,33 +281,8 @@ option {
     color: var(--bs-white);
 }
 
-[data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select {
-    background-color: #0d0d0d;
-}
-
 [data-bs-theme="dark"] .navbar .app-search .form-control {
     border-color: var(--bs-body-bg);
-}
-
-[data-bs-theme="dark"] .modal-content {
-    background-color: var(--bs-body-bg);
-    color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .h1,
-[data-bs-theme="dark"] .h2,
-[data-bs-theme="dark"] .h3,
-[data-bs-theme="dark"] .h4,
-[data-bs-theme="dark"] .h5,
-[data-bs-theme="dark"] .h6,
-[data-bs-theme="dark"] h1,
-[data-bs-theme="dark"] h2,
-[data-bs-theme="dark"] h3,
-[data-bs-theme="dark"] h4,
-[data-bs-theme="dark"] h5,
-[data-bs-theme="dark"] h6 {
-    color: var(--bs-white);
 }
 
 [data-bs-theme="dark"] [contenteditable].form-control[disabled],
@@ -355,16 +312,6 @@ option {
     color: var(--bs-border-color);
 }
 
-[data-bs-theme="dark"] .offcanvas-header .btn-close,
-[data-bs-theme="dark"] .alert-dismissible .btn-close {
-    filter: none;
-}
-
-[data-bs-theme="dark"] .alert-success {
-    color: var(--bs-body-bg);
-}
-
 [data-bs-theme="dark"] .app-admin-modal h2 .oi:empty:before {
     color: var(--bs-primary);
-    text-shadow: none;
 }

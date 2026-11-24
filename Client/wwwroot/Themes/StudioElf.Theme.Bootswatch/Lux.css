@@ -16,19 +16,7 @@ main {
 .content {
     flex: 1;
     top: 0;
-    padding-top: 14rem;
-}
-
-@media (min-width: 768px) {
-    .content {
-        padding-top: 16rem;
-    }
-}
-
-@media (min-width: 1005px) {
-    .content {
-        padding-top: 12rem;
-    }
+    padding-top: 12rem;
 }
 
 .navbar {
@@ -236,8 +224,8 @@ main {
 .dropdown-menu[data-bs-popper] a:hover,
 .dropdown-menu[data-bs-popper] a:focus,
 .dropdown-menu[data-bs-popper] a:active {
-    color: var(--bs-white);
-    background-color: var(--bs-primary);
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
 }
 
 .navbar-nav .dropdown-menu {
@@ -361,6 +349,6 @@ main {
 
 [data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:hover,
 [data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:focus,
-[data-bs-theme="dark"].dropdown-menu[data-bs-popper] a:active {
+[data-bs-theme="dark"] .dropdown-menu[data-bs-popper] a:active {
     background-color: var(--bs-black);
 }
